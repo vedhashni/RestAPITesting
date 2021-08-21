@@ -8,9 +8,11 @@ namespace SpotifyProject.RestDelete
     [TestClass]
     public class RestAddItem
     {
-        string Authorization = "Bearer BQBN3IR1FVS1kQLFEaIB2YXTY8AjjQ3-xcmbUDdMpZuBc7WiWHIpv9IfEbwyuiHeBPaA1pWvaqlVQf7HAkCaqtsFtW4JxGXI4vrm9fbV2ujZr2_XLTTZcQvbXzM8VeGFfZN4xktDa0D4V3C1DraVz77beiAs6muk4g8AFOu8yoL3sm7r4zfyXK21ZTYAUfNsSpCfgy_YPHImXi5KghRWmR-Glbw_q8U303PnWQxRDzuXaP4rXPETekLdP5XYGqQsHdKjDmjdrEl5zU-52VNV1gnt1zH9w6lArCy_y4jh";
+        string Authorization = "Bearer BQDb37K9MouIfsIhP0gYY_sQMllr4nvs21fUEHnwKS6IhDB24r2hCkORk6tKsP7KuUcsyUD3UVP5p1YFGllWVedY7Ds14xBwhasEet19ee7X9wCzJeE8ZtIw9dTH5OSiDLhzfIVxKB9o9ZE673nFjrPzpwEAOThaW-9M7tTgZYENYnXrljgrDYU1O3swKSlg7wUvpkyg72q_xsYL_6oXKnnQ4MB6pMZC3PF1m0z3cJZy-hLYmFBXu6rSd1UiYTqMTDkIZ__ceQmGRQiVvILnEIRCCMX8Aq1Lj1emH9VI";
 
-        private string postUrl = "https://api.spotify.com/v1/playlists/7KQNokUMKyOVbYpVncLeHK/tracks?uris=spotify%3Atrack%3A7mtYsNBYTDPa8Mscf166hg";
+        static string uri = "spotify:track:7mtYsNBYTDPa8Mscf166hg";
+        
+        private string postUrl = "https://api.spotify.com/v1/playlists/7KQNokUMKyOVbYpVncLeHK/tracks?uris=" + uri;
 
         //string json = "spotify%3Atrack%3A7mtYsNBYTDPa8Mscf166hg";
 
@@ -25,7 +27,7 @@ namespace SpotifyProject.RestDelete
 
             restRequest.AddHeader("Authorization", "token" + Authorization);
 
-           // restRequest.AddParameter("tracks", "json" + json);
+           restRequest.AddParameter("uris",uri);
 
             restResponse = restClient.Post(restRequest);
             Assert.AreEqual(201,202,(int)restResponse.StatusCode);
